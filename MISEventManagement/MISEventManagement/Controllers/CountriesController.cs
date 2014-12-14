@@ -216,7 +216,7 @@ namespace MISEventManagement.Controllers {
         public ActionResult Edit(Country country) {
             bool viewOf = ViewTapping(ViewStates.EditPost, country);
             if (ModelState.IsValid) {
-                db.Entry(country).State = EntityState.Modified;
+                db.Entry(country).State = System.Data.EntityState.Modified;
                 bool state = SaveDatabase(ViewStates.Edit, country);
                 if (state) {
                     AppVar.SetSavedStatus(ViewBag, _editedSaved); // Saved Successfully.

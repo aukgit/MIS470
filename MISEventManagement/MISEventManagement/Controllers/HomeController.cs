@@ -4,7 +4,7 @@ using System.Linq;
 using MISEventManagement.Models.POCO.IdentityCustomization;
 using MISEventManagement.Modules.DevUser;
 using System.Data.Entity;
-using System.Data;
+
 namespace MISEventManagement.Controllers {
     public class HomeController : BasicController {
         public HomeController()

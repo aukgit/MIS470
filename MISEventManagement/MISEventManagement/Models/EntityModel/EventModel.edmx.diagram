@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="06b03cb16b4241d48d3f630e3a4f8929" Name="Diagram1">
+        <EntityTypeShape EntityType="EventManagementModel.Comment" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagementModel.Event" Width="1.5" PointX="6" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagementModel.EventType" Width="1.5" PointX="3.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagementModel.Gallery" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagementModel.GalleryCategory" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagementModel.Host" Width="1.5" PointX="8.25" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagementModel.Invited" Width="1.5" PointX="8.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagementModel.PointsForTask" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagementModel.Review" Width="1.5" PointX="11.25" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagementModel.Tag" Width="1.5" PointX="6" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagementModel.TagRel" Width="1.5" PointX="8.25" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagementModel.TempUpload" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagementModel.User" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagementModel.UserPoint" Width="1.5" PointX="3" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagementModel.UserResponseToEvent" Width="1.5" PointX="11.25" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagementModel.Venu" Width="1.5" PointX="3.75" PointY="14.5" IsExpanded="true" />
+        <AssociationConnector Association="EventManagementModel.FK_Comment_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagementModel.FK_Comment_User" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagementModel.FK_Event_EventType" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagementModel.FK_Event_User" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagementModel.FK_Event_Venu" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagementModel.FK_Host_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagementModel.FK_Invited_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagementModel.FK_Review_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagementModel.FK_TagRel_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagementModel.FK_UserResponseToEvent_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagementModel.FK_Gallery_GalleryCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagementModel.FK_Host_User" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagementModel.FK_Invited_User" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagementModel.FK_Review_User" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagementModel.FK_TagRel_Tag" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagementModel.FK_UserPoint_User" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagementModel.FK_UserResponseToEvent_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

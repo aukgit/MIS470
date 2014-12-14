@@ -1,0 +1,501 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EventManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="CommentsID" />
+    </Key>
+    <Property Name="CommentsID" Type="Guid" Nullable="false" />
+    <Property Name="EventID" Type="Int64" Nullable="false" />
+    <Property Name="UserID" Type="Int64" Nullable="false" />
+    <Property Name="EventComment" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ReplyToComment" Type="Guid" />
+    <Property Name="HasUnderlying" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Event" Relationship="Self.FK_Comment_Event" FromRole="Comment" ToRole="Event" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Comment_User" FromRole="Comment" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="EventID" />
+    </Key>
+    <Property Name="EventID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EventName" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="HappeningDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="GuestsLimit" Type="Int64" Nullable="false" />
+    <Property Name="IsHappening" Type="Boolean" Nullable="false" />
+    <Property Name="IsHappened" Type="Boolean" Nullable="false" />
+    <Property Name="GuestsShowedUp" Type="Int64" Nullable="false" />
+    <Property Name="GuestsWantsToCome" Type="Int64" Nullable="false" />
+    <Property Name="IsSuccess" Type="Boolean" Nullable="false" />
+    <Property Name="EventDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EventDescription2" Type="String" MaxLength="800" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UploadGuid" Type="Guid" Nullable="false" />
+    <Property Name="IsVeryClose" Type="Boolean" Nullable="false" />
+    <Property Name="NotifyUsersCount" Type="Byte" Nullable="false" />
+    <Property Name="CreatedByUserID" Type="Int64" Nullable="false" />
+    <Property Name="AvgRating" Type="Double" Nullable="false" />
+    <Property Name="FollowingCount" Type="Int64" Nullable="false" />
+    <Property Name="LikedCount" Type="Int64" Nullable="false" />
+    <Property Name="DisLikedCount" Type="Int64" Nullable="false" />
+    <Property Name="EventTypeID" Type="Byte" Nullable="false" />
+    <Property Name="IsFollowUpEvent" Type="Boolean" Nullable="false" />
+    <Property Name="EventSeriesNumber" Type="Int16" Nullable="false" />
+    <Property Name="PreviousEventID" Type="Int64" />
+    <Property Name="NextFollowUpEventName" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="VenuID" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Comments" Relationship="Self.FK_Comment_Event" FromRole="Event" ToRole="Comment" />
+    <NavigationProperty Name="EventType" Relationship="Self.FK_Event_EventType" FromRole="Event" ToRole="EventType" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Event_User" FromRole="Event" ToRole="User" />
+    <NavigationProperty Name="Venu" Relationship="Self.FK_Event_Venu" FromRole="Event" ToRole="Venu" />
+    <NavigationProperty Name="Hosts" Relationship="Self.FK_Host_Event" FromRole="Event" ToRole="Host" />
+    <NavigationProperty Name="Inviteds" Relationship="Self.FK_Invited_Event" FromRole="Event" ToRole="Invited" />
+    <NavigationProperty Name="Reviews" Relationship="Self.FK_Review_Event" FromRole="Event" ToRole="Review" />
+    <NavigationProperty Name="TagRels" Relationship="Self.FK_TagRel_Event" FromRole="Event" ToRole="TagRel" />
+    <NavigationProperty Name="UserResponseToEvents" Relationship="Self.FK_UserResponseToEvent_Event" FromRole="Event" ToRole="UserResponseToEvent" />
+  </EntityType>
+  <EntityType Name="EventType">
+    <Key>
+      <PropertyRef Name="EventTypeID" />
+    </Key>
+    <Property Name="EventTypeID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeEvent" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Events" Relationship="Self.FK_Event_EventType" FromRole="EventType" ToRole="Event" />
+  </EntityType>
+  <EntityType Name="Gallery">
+    <Key>
+      <PropertyRef Name="GalleryID" />
+    </Key>
+    <Property Name="GalleryID" Type="Guid" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Subtitle" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="Sequence" Type="Byte" Nullable="false" />
+    <Property Name="GalleryCategoryID" Type="Byte" Nullable="false" />
+    <Property Name="Extension" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="GalleryCategory" Relationship="Self.FK_Gallery_GalleryCategory" FromRole="Gallery" ToRole="GalleryCategory" />
+  </EntityType>
+  <EntityType Name="GalleryCategory">
+    <Key>
+      <PropertyRef Name="GalleryCategoryID" />
+    </Key>
+    <Property Name="GalleryCategoryID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Width" Type="Double" Nullable="false" />
+    <Property Name="Height" Type="Double" Nullable="false" />
+    <Property Name="IsAdvertise" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Galleries" Relationship="Self.FK_Gallery_GalleryCategory" FromRole="GalleryCategory" ToRole="Gallery" />
+  </EntityType>
+  <EntityType Name="Host">
+    <Key>
+      <PropertyRef Name="HostID" />
+    </Key>
+    <Property Name="HostID" Type="Guid" Nullable="false" />
+    <Property Name="EventID" Type="Int64" Nullable="false" />
+    <Property Name="UserID" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Event" Relationship="Self.FK_Host_Event" FromRole="Host" ToRole="Event" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Host_User" FromRole="Host" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Invited">
+    <Key>
+      <PropertyRef Name="InvitedID" />
+    </Key>
+    <Property Name="InvitedID" Type="Guid" Nullable="false" />
+    <Property Name="EventID" Type="Int64" Nullable="false" />
+    <Property Name="UserID" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Event" Relationship="Self.FK_Invited_Event" FromRole="Invited" ToRole="Event" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Invited_User" FromRole="Invited" ToRole="User" />
+  </EntityType>
+  <EntityType Name="PointsForTask">
+    <Key>
+      <PropertyRef Name="PointsForTaskID" />
+    </Key>
+    <Property Name="PointsForTaskID" Type="Byte" Nullable="false" />
+    <Property Name="TaskName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PointsGain" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Review">
+    <Key>
+      <PropertyRef Name="ReviewID" />
+    </Key>
+    <Property Name="ReviewID" Type="Guid" Nullable="false" />
+    <Property Name="EventID" Type="Int64" Nullable="false" />
+    <Property Name="UserID" Type="Int64" Nullable="false" />
+    <Property Name="Rating" Type="Byte" Nullable="false" />
+    <Property Name="ReviewComment" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SuggestionsToMakeItBetter" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="PostAsAnonymous" Type="Boolean" Nullable="false" />
+    <Property Name="WhatLikedAboutEvent" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="LikedCount" Type="Int64" Nullable="false" />
+    <Property Name="DisLikedCount" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Event" Relationship="Self.FK_Review_Event" FromRole="Review" ToRole="Event" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Review_User" FromRole="Review" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Tag">
+    <Key>
+      <PropertyRef Name="TagID" />
+    </Key>
+    <Property Name="TagID" Type="Guid" Nullable="false" />
+    <Property Name="TagName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TagRels" Relationship="Self.FK_TagRel_Tag" FromRole="Tag" ToRole="TagRel" />
+  </EntityType>
+  <EntityType Name="TagRel">
+    <Key>
+      <PropertyRef Name="TagRelID" />
+    </Key>
+    <Property Name="TagRelID" Type="Guid" Nullable="false" />
+    <Property Name="TagID" Type="Guid" Nullable="false" />
+    <Property Name="EventID" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Event" Relationship="Self.FK_TagRel_Event" FromRole="TagRel" ToRole="Event" />
+    <NavigationProperty Name="Tag" Relationship="Self.FK_TagRel_Tag" FromRole="TagRel" ToRole="Tag" />
+  </EntityType>
+  <EntityType Name="TempUpload">
+    <Key>
+      <PropertyRef Name="TempUploadID" />
+    </Key>
+    <Property Name="TempUploadID" Type="Guid" Nullable="false" />
+    <Property Name="UserID" Type="Int64" Nullable="false" />
+    <Property Name="GalleryID" Type="Guid" Nullable="false" />
+    <Property Name="RelatedUploadGuid" Type="Guid" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int64" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CurrentPoint" Type="Int64" Nullable="false" />
+    <Property Name="IsAuthurized" Type="Boolean" Nullable="false" />
+    <Property Name="IsFlagged" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Comments" Relationship="Self.FK_Comment_User" FromRole="User" ToRole="Comment" />
+    <NavigationProperty Name="Events" Relationship="Self.FK_Event_User" FromRole="User" ToRole="Event" />
+    <NavigationProperty Name="Hosts" Relationship="Self.FK_Host_User" FromRole="User" ToRole="Host" />
+    <NavigationProperty Name="Inviteds" Relationship="Self.FK_Invited_User" FromRole="User" ToRole="Invited" />
+    <NavigationProperty Name="Reviews" Relationship="Self.FK_Review_User" FromRole="User" ToRole="Review" />
+    <NavigationProperty Name="UserPoints" Relationship="Self.FK_UserPoint_User" FromRole="User" ToRole="UserPoint" />
+    <NavigationProperty Name="UserResponseToEvents" Relationship="Self.FK_UserResponseToEvent_User" FromRole="User" ToRole="UserResponseToEvent" />
+  </EntityType>
+  <EntityType Name="UserPoint">
+    <Key>
+      <PropertyRef Name="UserPointID" />
+    </Key>
+    <Property Name="UserPointID" Type="Guid" Nullable="false" />
+    <Property Name="UserID" Type="Int64" Nullable="false" />
+    <Property Name="PointGained" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_UserPoint_User" FromRole="UserPoint" ToRole="User" />
+  </EntityType>
+  <EntityType Name="UserResponseToEvent">
+    <Key>
+      <PropertyRef Name="UserResponseToEventID" />
+    </Key>
+    <Property Name="UserResponseToEventID" Type="Guid" Nullable="false" />
+    <Property Name="EventID" Type="Int64" Nullable="false" />
+    <Property Name="UserID" Type="Int64" Nullable="false" />
+    <Property Name="WasInvited" Type="Boolean" Nullable="false" />
+    <Property Name="IsFollowing" Type="Boolean" Nullable="false" />
+    <Property Name="IsGoingFinally" Type="Boolean" Nullable="false" />
+    <Property Name="IsArrivedConfirmedByHost" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Event" Relationship="Self.FK_UserResponseToEvent_Event" FromRole="UserResponseToEvent" ToRole="Event" />
+    <NavigationProperty Name="User" Relationship="Self.FK_UserResponseToEvent_User" FromRole="UserResponseToEvent" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Venu">
+    <Key>
+      <PropertyRef Name="VenuID" />
+    </Key>
+    <Property Name="VenuID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VenuName" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VenuAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CountryId" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="Events" Relationship="Self.FK_Event_Venu" FromRole="Venu" ToRole="Event" />
+  </EntityType>
+  <Association Name="FK_Comment_Event">
+    <End Role="Event" Type="Self.Event" Multiplicity="1" />
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="EventID" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="EventID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comment_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Event_EventType">
+    <End Role="EventType" Type="Self.EventType" Multiplicity="1" />
+    <End Role="Event" Type="Self.Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EventType">
+        <PropertyRef Name="EventTypeID" />
+      </Principal>
+      <Dependent Role="Event">
+        <PropertyRef Name="EventTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Event_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Event" Type="Self.Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Event">
+        <PropertyRef Name="CreatedByUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Event_Venu">
+    <End Role="Venu" Type="Self.Venu" Multiplicity="1" />
+    <End Role="Event" Type="Self.Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Venu">
+        <PropertyRef Name="VenuID" />
+      </Principal>
+      <Dependent Role="Event">
+        <PropertyRef Name="VenuID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Host_Event">
+    <End Role="Event" Type="Self.Event" Multiplicity="1" />
+    <End Role="Host" Type="Self.Host" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="EventID" />
+      </Principal>
+      <Dependent Role="Host">
+        <PropertyRef Name="EventID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Invited_Event">
+    <End Role="Event" Type="Self.Event" Multiplicity="1" />
+    <End Role="Invited" Type="Self.Invited" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="EventID" />
+      </Principal>
+      <Dependent Role="Invited">
+        <PropertyRef Name="EventID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Review_Event">
+    <End Role="Event" Type="Self.Event" Multiplicity="1" />
+    <End Role="Review" Type="Self.Review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="EventID" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="EventID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TagRel_Event">
+    <End Role="Event" Type="Self.Event" Multiplicity="1" />
+    <End Role="TagRel" Type="Self.TagRel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="EventID" />
+      </Principal>
+      <Dependent Role="TagRel">
+        <PropertyRef Name="EventID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserResponseToEvent_Event">
+    <End Role="Event" Type="Self.Event" Multiplicity="1" />
+    <End Role="UserResponseToEvent" Type="Self.UserResponseToEvent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="EventID" />
+      </Principal>
+      <Dependent Role="UserResponseToEvent">
+        <PropertyRef Name="EventID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Gallery_GalleryCategory">
+    <End Role="GalleryCategory" Type="Self.GalleryCategory" Multiplicity="1" />
+    <End Role="Gallery" Type="Self.Gallery" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GalleryCategory">
+        <PropertyRef Name="GalleryCategoryID" />
+      </Principal>
+      <Dependent Role="Gallery">
+        <PropertyRef Name="GalleryCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Host_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Host" Type="Self.Host" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Host">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Invited_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Invited" Type="Self.Invited" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Invited">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Review_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Review" Type="Self.Review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TagRel_Tag">
+    <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+    <End Role="TagRel" Type="Self.TagRel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tag">
+        <PropertyRef Name="TagID" />
+      </Principal>
+      <Dependent Role="TagRel">
+        <PropertyRef Name="TagID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserPoint_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserPoint" Type="Self.UserPoint" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserPoint">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserResponseToEvent_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserResponseToEvent" Type="Self.UserResponseToEvent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserResponseToEvent">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EventManagementEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Comments" EntityType="Self.Comment" />
+    <EntitySet Name="Events" EntityType="Self.Event" />
+    <EntitySet Name="EventTypes" EntityType="Self.EventType" />
+    <EntitySet Name="Galleries" EntityType="Self.Gallery" />
+    <EntitySet Name="GalleryCategories" EntityType="Self.GalleryCategory" />
+    <EntitySet Name="Hosts" EntityType="Self.Host" />
+    <EntitySet Name="Inviteds" EntityType="Self.Invited" />
+    <EntitySet Name="PointsForTasks" EntityType="Self.PointsForTask" />
+    <EntitySet Name="Reviews" EntityType="Self.Review" />
+    <EntitySet Name="Tags" EntityType="Self.Tag" />
+    <EntitySet Name="TagRels" EntityType="Self.TagRel" />
+    <EntitySet Name="TempUploads" EntityType="Self.TempUpload" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="UserPoints" EntityType="Self.UserPoint" />
+    <EntitySet Name="UserResponseToEvents" EntityType="Self.UserResponseToEvent" />
+    <EntitySet Name="Venus" EntityType="Self.Venu" />
+    <AssociationSet Name="FK_Comment_Event" Association="Self.FK_Comment_Event">
+      <End Role="Event" EntitySet="Events" />
+      <End Role="Comment" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comment_User" Association="Self.FK_Comment_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Comment" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Event_EventType" Association="Self.FK_Event_EventType">
+      <End Role="EventType" EntitySet="EventTypes" />
+      <End Role="Event" EntitySet="Events" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Event_User" Association="Self.FK_Event_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Event" EntitySet="Events" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Event_Venu" Association="Self.FK_Event_Venu">
+      <End Role="Venu" EntitySet="Venus" />
+      <End Role="Event" EntitySet="Events" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Host_Event" Association="Self.FK_Host_Event">
+      <End Role="Event" EntitySet="Events" />
+      <End Role="Host" EntitySet="Hosts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Invited_Event" Association="Self.FK_Invited_Event">
+      <End Role="Event" EntitySet="Events" />
+      <End Role="Invited" EntitySet="Inviteds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Review_Event" Association="Self.FK_Review_Event">
+      <End Role="Event" EntitySet="Events" />
+      <End Role="Review" EntitySet="Reviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TagRel_Event" Association="Self.FK_TagRel_Event">
+      <End Role="Event" EntitySet="Events" />
+      <End Role="TagRel" EntitySet="TagRels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserResponseToEvent_Event" Association="Self.FK_UserResponseToEvent_Event">
+      <End Role="Event" EntitySet="Events" />
+      <End Role="UserResponseToEvent" EntitySet="UserResponseToEvents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Gallery_GalleryCategory" Association="Self.FK_Gallery_GalleryCategory">
+      <End Role="GalleryCategory" EntitySet="GalleryCategories" />
+      <End Role="Gallery" EntitySet="Galleries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Host_User" Association="Self.FK_Host_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Host" EntitySet="Hosts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Invited_User" Association="Self.FK_Invited_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Invited" EntitySet="Inviteds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Review_User" Association="Self.FK_Review_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Review" EntitySet="Reviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TagRel_Tag" Association="Self.FK_TagRel_Tag">
+      <End Role="Tag" EntitySet="Tags" />
+      <End Role="TagRel" EntitySet="TagRels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserPoint_User" Association="Self.FK_UserPoint_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserPoint" EntitySet="UserPoints" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserResponseToEvent_User" Association="Self.FK_UserResponseToEvent_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserResponseToEvent" EntitySet="UserResponseToEvents" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

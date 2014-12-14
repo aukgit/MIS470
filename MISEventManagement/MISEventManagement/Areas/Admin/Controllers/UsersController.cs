@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -246,7 +245,7 @@ namespace MISEventManagement.Areas.Admin.Controllers {
                 user.IsBlocked = false;
                 user.BlockedbyUserId = 0;
                 user.BlockingReason = "";
-                db.Entry(user).State = EntityState.Modified;
+                db.Entry(user).State = System.Data.EntityState.Modified;
                 if (SaveDatabase(ViewStates.EditPost, user)) {
                     string currentUserName = UserManager.GetCurrentUser().DisplayName;
 

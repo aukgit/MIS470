@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity;
+
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -78,7 +78,7 @@ namespace MISEventManagement.Areas.Admin.Controllers {
             ViewBag.Editing = true;
             HasDropDownAttr(navigationItem);
             if (ModelState.IsValid) {
-                db.Entry(navigationItem).State = EntityState.Modified;
+                db.Entry(navigationItem).State = System.Data.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("List", new { id = navigationItem.NavigationID });
             }

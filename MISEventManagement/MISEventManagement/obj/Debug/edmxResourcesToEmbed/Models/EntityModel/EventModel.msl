@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EventManagementModelStoreContainer" CdmEntityContainer="EventManagementEntities">
+    <EntitySetMapping Name="Comments">
+      <EntityTypeMapping TypeName="EventManagementModel.Comment">
+        <MappingFragment StoreEntitySet="Comment">
+          <ScalarProperty Name="CommentsID" ColumnName="CommentsID" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="EventComment" ColumnName="EventComment" />
+          <ScalarProperty Name="ReplyToComment" ColumnName="ReplyToComment" />
+          <ScalarProperty Name="HasUnderlying" ColumnName="HasUnderlying" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Events">
+      <EntityTypeMapping TypeName="EventManagementModel.Event">
+        <MappingFragment StoreEntitySet="Event">
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="EventName" ColumnName="EventName" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="HappeningDate" ColumnName="HappeningDate" />
+          <ScalarProperty Name="GuestsLimit" ColumnName="GuestsLimit" />
+          <ScalarProperty Name="IsHappening" ColumnName="IsHappening" />
+          <ScalarProperty Name="IsHappened" ColumnName="IsHappened" />
+          <ScalarProperty Name="GuestsShowedUp" ColumnName="GuestsShowedUp" />
+          <ScalarProperty Name="GuestsWantsToCome" ColumnName="GuestsWantsToCome" />
+          <ScalarProperty Name="IsSuccess" ColumnName="IsSuccess" />
+          <ScalarProperty Name="EventDescription" ColumnName="EventDescription" />
+          <ScalarProperty Name="EventDescription2" ColumnName="EventDescription2" />
+          <ScalarProperty Name="UploadGuid" ColumnName="UploadGuid" />
+          <ScalarProperty Name="IsVeryClose" ColumnName="IsVeryClose" />
+          <ScalarProperty Name="NotifyUsersCount" ColumnName="NotifyUsersCount" />
+          <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+          <ScalarProperty Name="AvgRating" ColumnName="AvgRating" />
+          <ScalarProperty Name="FollowingCount" ColumnName="FollowingCount" />
+          <ScalarProperty Name="LikedCount" ColumnName="LikedCount" />
+          <ScalarProperty Name="DisLikedCount" ColumnName="DisLikedCount" />
+          <ScalarProperty Name="EventTypeID" ColumnName="EventTypeID" />
+          <ScalarProperty Name="IsFollowUpEvent" ColumnName="IsFollowUpEvent" />
+          <ScalarProperty Name="EventSeriesNumber" ColumnName="EventSeriesNumber" />
+          <ScalarProperty Name="PreviousEventID" ColumnName="PreviousEventID" />
+          <ScalarProperty Name="NextFollowUpEventName" ColumnName="NextFollowUpEventName" />
+          <ScalarProperty Name="VenuID" ColumnName="VenuID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EventTypes">
+      <EntityTypeMapping TypeName="EventManagementModel.EventType">
+        <MappingFragment StoreEntitySet="EventType">
+          <ScalarProperty Name="EventTypeID" ColumnName="EventTypeID" />
+          <ScalarProperty Name="TypeEvent" ColumnName="TypeEvent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Galleries">
+      <EntityTypeMapping TypeName="EventManagementModel.Gallery">
+        <MappingFragment StoreEntitySet="Gallery">
+          <ScalarProperty Name="GalleryID" ColumnName="GalleryID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Subtitle" ColumnName="Subtitle" />
+          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+          <ScalarProperty Name="GalleryCategoryID" ColumnName="GalleryCategoryID" />
+          <ScalarProperty Name="Extension" ColumnName="Extension" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GalleryCategories">
+      <EntityTypeMapping TypeName="EventManagementModel.GalleryCategory">
+        <MappingFragment StoreEntitySet="GalleryCategory">
+          <ScalarProperty Name="GalleryCategoryID" ColumnName="GalleryCategoryID" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="Width" ColumnName="Width" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="IsAdvertise" ColumnName="IsAdvertise" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Hosts">
+      <EntityTypeMapping TypeName="EventManagementModel.Host">
+        <MappingFragment StoreEntitySet="Host">
+          <ScalarProperty Name="HostID" ColumnName="HostID" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Inviteds">
+      <EntityTypeMapping TypeName="EventManagementModel.Invited">
+        <MappingFragment StoreEntitySet="Invited">
+          <ScalarProperty Name="InvitedID" ColumnName="InvitedID" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PointsForTasks">
+      <EntityTypeMapping TypeName="EventManagementModel.PointsForTask">
+        <MappingFragment StoreEntitySet="PointsForTask">
+          <ScalarProperty Name="PointsForTaskID" ColumnName="PointsForTaskID" />
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+          <ScalarProperty Name="PointsGain" ColumnName="PointsGain" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reviews">
+      <EntityTypeMapping TypeName="EventManagementModel.Review">
+        <MappingFragment StoreEntitySet="Review">
+          <ScalarProperty Name="ReviewID" ColumnName="ReviewID" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="ReviewComment" ColumnName="ReviewComment" />
+          <ScalarProperty Name="SuggestionsToMakeItBetter" ColumnName="SuggestionsToMakeItBetter" />
+          <ScalarProperty Name="PostAsAnonymous" ColumnName="PostAsAnonymous" />
+          <ScalarProperty Name="WhatLikedAboutEvent" ColumnName="WhatLikedAboutEvent" />
+          <ScalarProperty Name="LikedCount" ColumnName="LikedCount" />
+          <ScalarProperty Name="DisLikedCount" ColumnName="DisLikedCount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tags">
+      <EntityTypeMapping TypeName="EventManagementModel.Tag">
+        <MappingFragment StoreEntitySet="Tag">
+          <ScalarProperty Name="TagID" ColumnName="TagID" />
+          <ScalarProperty Name="TagName" ColumnName="TagName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TagRels">
+      <EntityTypeMapping TypeName="EventManagementModel.TagRel">
+        <MappingFragment StoreEntitySet="TagRel">
+          <ScalarProperty Name="TagRelID" ColumnName="TagRelID" />
+          <ScalarProperty Name="TagID" ColumnName="TagID" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TempUploads">
+      <EntityTypeMapping TypeName="EventManagementModel.TempUpload">
+        <MappingFragment StoreEntitySet="TempUpload">
+          <ScalarProperty Name="TempUploadID" ColumnName="TempUploadID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="GalleryID" ColumnName="GalleryID" />
+          <ScalarProperty Name="RelatedUploadGuid" ColumnName="RelatedUploadGuid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="EventManagementModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="CurrentPoint" ColumnName="CurrentPoint" />
+          <ScalarProperty Name="IsAuthurized" ColumnName="IsAuthurized" />
+          <ScalarProperty Name="IsFlagged" ColumnName="IsFlagged" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserPoints">
+      <EntityTypeMapping TypeName="EventManagementModel.UserPoint">
+        <MappingFragment StoreEntitySet="UserPoint">
+          <ScalarProperty Name="UserPointID" ColumnName="UserPointID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="PointGained" ColumnName="PointGained" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserResponseToEvents">
+      <EntityTypeMapping TypeName="EventManagementModel.UserResponseToEvent">
+        <MappingFragment StoreEntitySet="UserResponseToEvent">
+          <ScalarProperty Name="UserResponseToEventID" ColumnName="UserResponseToEventID" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="WasInvited" ColumnName="WasInvited" />
+          <ScalarProperty Name="IsFollowing" ColumnName="IsFollowing" />
+          <ScalarProperty Name="IsGoingFinally" ColumnName="IsGoingFinally" />
+          <ScalarProperty Name="IsArrivedConfirmedByHost" ColumnName="IsArrivedConfirmedByHost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Venus">
+      <EntityTypeMapping TypeName="EventManagementModel.Venu">
+        <MappingFragment StoreEntitySet="Venu">
+          <ScalarProperty Name="VenuID" ColumnName="VenuID" />
+          <ScalarProperty Name="VenuName" ColumnName="VenuName" />
+          <ScalarProperty Name="VenuAddress" ColumnName="VenuAddress" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

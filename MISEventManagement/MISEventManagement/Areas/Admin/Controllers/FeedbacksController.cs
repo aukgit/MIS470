@@ -73,7 +73,7 @@ namespace MISEventManagement.Areas.Admin.Controllers {
         public ActionResult Edit(Feedback feedback) {
             GetDropDowns();
             if (ModelState.IsValid) {
-                db.Entry(feedback).State = EntityState.Modified;
+                db.Entry(feedback).State = System.Data.EntityState.Modified;
                 feedback.IsSolved = true;
                 feedback.IsUnSolved = false;
                 feedback.IsViewed = true;

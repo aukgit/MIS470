@@ -50,7 +50,7 @@ namespace MISEventManagement.Areas.Admin.Controllers {
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Navigation navigation) {
             if (ModelState.IsValid) {
-                db.Entry(navigation).State = EntityState.Modified;
+                db.Entry(navigation).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 ViewBag.Success = "Saved Successfully";
                 return RedirectToAction("Index");
